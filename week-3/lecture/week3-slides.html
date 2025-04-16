@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICPC ANU Community</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #00a3e1;
+            --secondary-color: #003d7c;
+            --accent-color: #00ff87;
+            --bg-dark: #0a192f;
+            --bg-darker: #071425;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            overflow: hidden;
+        }
+
+        .gradient-overlay {
+            background: linear-gradient(135deg,
+                    rgba(0, 163, 225, 0.2),
+                    rgba(0, 255, 135, 0.1));
+        }
+
+        @keyframes fadeInSlide {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .animate-fade-in {
+            animation: fadeInSlide 1s ease-out forwards;
+        }
+
+        .neon-text {
+            text-shadow:
+                0 0 10px rgba(0, 163, 225, 0.7),
+                0 0 20px rgba(0, 255, 135, 0.5);
+            color: var(--accent-color);
+            transition: all 0.3s ease;
+        }
+
+        .neon-text:hover {
+            text-shadow:
+                0 0 15px rgba(0, 163, 225, 0.9),
+                0 0 25px rgba(0, 255, 135, 0.7);
+            animation: pulse 1s infinite;
+        }
+
+        .bg-glass {
+            background: rgba(11, 25, 47, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 255, 135, 0.2);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body class="text-white min-h-screen flex flex-col bg-darker">
+    <!-- Welcome Overlay -->
+    <div id="welcomeOverlay"
+        class="fixed inset-0 z-50 flex items-center justify-center gradient-overlay bg-opacity-90 animate-fade-in">
+        <div class="text-center bg-glass p-8 rounded-xl">
+            <!-- Circular Logo -->
+            <div class="flex justify-center mb-4">
+                <img src="icpc-anu-logo.jpeg" alt="ICPC ANU Logo"
+                    class="w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-accent-color shadow-lg">
+            </div>
+            <h1 class="text-4xl md:text-6xl font-bold neon-text mb-4">
+                ICPC ANU Community
+            </h1>
+            <h3 class="text-3xl md:text-5xl font-bold text-primary mb-4">
+                Level 0 2025 Week Three
+            </h3>
+            <p class="text-xl md:text-2xl opacity-80 text-accent-color">
+                Created by Sayed Mostafa
+            </p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div id="mainContent" class="flex-grow flex flex-col opacity-0 transition-all duration-1000 ease-in-out">
+        <div class="flex-grow relative">
+            <iframe src="https://www.canva.com/design/DAGkwd0HWiU/iuBT508lRYIjBsWcx95jeg/view?embed"
+                class="absolute inset-0 w-full h-full" allowfullscreen loading="lazy"></iframe>
+        </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="bg-gray-900 text-white text-center py-3 px-4 shadow-lg">
+        <span class="font-semibold text-accent-color">
+            ICPC ANU Community | Transforming Challenges into Opportunities
+        </span>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const welcomeOverlay = document.getElementById('welcomeOverlay');
+            const mainContent = document.getElementById('mainContent');
+
+            setTimeout(() => {
+                welcomeOverlay.classList.add('opacity-0');
+                welcomeOverlay.style.pointerEvents = 'none';
+
+                mainContent.classList.remove('opacity-0');
+                mainContent.classList.add('opacity-100');
+
+                // Remove the overlay after fade-out
+                setTimeout(() => welcomeOverlay.remove(), 500);
+            }, 3000);
+        });
+    </script>
+</body>
+
+</html>
